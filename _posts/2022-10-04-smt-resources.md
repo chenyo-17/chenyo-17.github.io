@@ -10,7 +10,7 @@ math: true
 
 - [Decision procedures](http://www.decision-procedures.org/)
 
-This book and associated slides teach how the decision procedure works in the SMT solver for different theories such as bit-vectors or linear real arthimetic
+This book and associated slides teach how the decision procedure works in the SMT solver for different theories such as bit-vectors or linear real arthimetic, which is helpful for understanding the solver statistics.
 
 - [SMT-LIBv2 online tutorial](https://microsoft.github.io/z3guide/docs/logic/basiccommands/)
 
