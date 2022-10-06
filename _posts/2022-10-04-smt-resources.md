@@ -6,9 +6,7 @@ tags: smt-resources
 math: true
 ---
 
-## Markded/Unchecked resources for learning SMT
-
-### Online resources
+## Online resources
 
 - [Decision procedures](http://www.decision-procedures.org/)
 
@@ -22,8 +20,30 @@ This website gives an online tutorial of Z3. It seems to cover the same topics a
 
 This website gives more examples on how to use z3 python API to do different things
 
-### Papers
+- [Berkeley's formal methods](https://people.eecs.berkeley.edu/~sseshia/219c/)
+
+This course teaches formal methods of verifications and synthesis. The [instructor](https://people.eecs.berkeley.edu/~sseshia/#talks) is famous.
+
+[This lecture slides](https://people.eecs.berkeley.edu/~sseshia/219c/lectures/Interpolation.pdf) introduces what is propositional interpolation.
+
+- [What is first-order logic](https://www.cs.jhu.edu/~phi/ai/slides/lecture-first-order-logic.pdf)
+
+This slide from JHU gives intresting examples of first-order logic.
+
+
+## Papers
+
+The following papers are introduced by Programming Z3.
 
 - [Cube and Conquer](https://www.cs.utexas.edu/~marijn/publications/cube.pdf)
 
 This paper introduces the algorithm of "cube and conquer", which is a technique used in Z3 to increase the scalability by partitioning the search space into sub-problems that can be solved in parallel.
+
+- Get MSS and MUS: [1](https://www.ijcai.org/proceedings/2018/0188.pdf), [2](https://link.springer.com/content/pdf/10.1007/978-3-642-38171-3_11.pdf)
+
+The above papers introduce algorithms to enumeraring all maximal satisfying subsets and minimal unsat cores together.
+
+- [Bounded Model Checking](https://ebooks.iospress.nl/publication/4999)
+
+Thid book chapter introduces bounded model checking, which is a technique to check reachability problems between two states. 
+
