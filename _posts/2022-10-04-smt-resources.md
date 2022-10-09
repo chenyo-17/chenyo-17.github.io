@@ -37,6 +37,7 @@ This course covers many topics related to Z3, such as bounded model checking. Th
 - [This instructor](https://www.cs.tsukuba.ac.jp/~uhiro/) has research on functional program verification
 
 
+
 ## Papers
 
 The following papers are introduced by Programming Z3.
