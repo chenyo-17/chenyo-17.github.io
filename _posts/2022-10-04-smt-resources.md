@@ -30,6 +30,12 @@ This course teaches formal methods of verifications and synthesis. The [instruct
 
 This slide from JHU gives intresting examples of first-order logic.
 
+- Z3Py relared course: [1](https://www.cs.tau.ac.il/~msagiv/courses/software-productivity19.html), [2](https://www.cs.tau.ac.il/~msagiv/courses/asv/)
+
+This course covers many topics related to Z3, such as bounded model checking. The [instructor](https://www.cs.tau.ac.il/~msagiv/#courses) also teaches other related courses.
+
+- [This instructor](https://www.cs.tsukuba.ac.jp/~uhiro/) has research on functional program verification
+
 
 ## Papers
 
