@@ -17,4 +17,6 @@ The rules and corresponding assertions involving `fail` are `rule (=> (and (f n 
 If one first looks at the assertion version, to guarantee `not fail` holds, it requires the expression `f(n, m) && m == 0` is **always false** for every $$m$$ and $$n$$, otherwise the entire implication becomes false.
 If `m != 0`, the expression is false trivially, if `m == 0`, one next considers `n == 0` and `n >= 0`, if `n < 0`, we look at another assertion `forall n, n < 0 => f(n, 0)`, these 2 assertions cannot hold together, hence the entire thing is unsat in the normal SMT-LIB syntax.
 
-Since `fail` cannot always be false, there exists a derivation/trace for it to be true, hence the Datalog engine outputs `sat`.
+Since it is `unsat` for the normal SMT formulation, it indicates `fail` is an invariant/fact, hence the Datalog engine produces `sat`.
+Which indicates the predicates: the original function accepts negative integers.
+Note the original function is not `f`, here `f` is a relation, which returns true if the 2 arguments of `f` input and output exists.
