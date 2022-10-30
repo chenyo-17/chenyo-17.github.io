@@ -1,7 +1,7 @@
 ---
 title: "Illusion generation with Bayesian models"
 date: 2022-10-05 13:00:00 +0200
-categories: paper, machine-learning
+categories: paper machine-learning
 tags: bayesian-inference probabilistic-model
 math: true
 ---

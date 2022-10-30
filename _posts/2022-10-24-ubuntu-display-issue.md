@@ -2,7 +2,7 @@
 title: "Ubuntu external monitors not working"
 date: 2022-10-24 9:00:00 +0200
 categories: ubuntu
-tags: installtion, GPU
+tags: installtion GPU
 ---
 
 After reinstalling Ubuntu 20.04, I encountered the same problem as I had in Ubuntu 22.04 when I was trying to connect external monitors.

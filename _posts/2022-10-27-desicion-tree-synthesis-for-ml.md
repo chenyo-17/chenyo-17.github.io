@@ -1,7 +1,7 @@
 ---
 title: "Decision tree synthesis for ML"
 date: 2022-10-27 12:00:00 +0200
-categories: paper, machine-learning, synthesis
+categories: paper machine-learning synthesis
 tags: decision-tree 
 ---
 
