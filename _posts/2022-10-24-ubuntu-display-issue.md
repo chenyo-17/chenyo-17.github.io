@@ -14,4 +14,4 @@ After switching to Nvidia drivier 515, there is an error in `nvidia-smi` showing
 
 Then I uninstalled that Nvidia driver with `sudo apt remove --purge nivida* -y` and `sudo apt autoremove -y`, and reinstalled it from command line with `sudo ubuntu-drivers autoinstall`, but after the reboot, it has no improvement at all.
 
-Finally, Bao tried to install an older Nividia driver 470, and after the reboot, all monitors work normally. 
+Finally, it is solved by installing an **older** Nividia driver 470, and after the reboot, all monitors work normally. 
