@@ -1,8 +1,8 @@
 ---
 title: "Resources for learning SMT"
 date: 2022-10-04 10:00:00 +0200
-categories: smt
-tags: smt-resources
+categories: tool
+tags: smt
 math: true
 ---
 

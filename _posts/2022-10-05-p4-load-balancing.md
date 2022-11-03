@@ -1,8 +1,8 @@
 ---
 title: "Load balancing in P4"
 date: 2022-10-04 20:00:00 +0200
-categories: p4
-tags: p4 load-balancing
+categories: lecture
+tags: p4
 math: true
 ---
 

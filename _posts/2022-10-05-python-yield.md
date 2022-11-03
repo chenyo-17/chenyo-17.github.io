@@ -1,7 +1,7 @@
 ---
 title: "Python features"
 date: 2022-10-05 12:00:00 +0200
-categories: python
+categories: lang
 tags: python
 math: true
 ---

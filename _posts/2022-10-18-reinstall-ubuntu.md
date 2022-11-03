@@ -1,8 +1,8 @@
 ---
 title: "Reinstall Ubuntu"
 date: 2022-10-18 9:00:00 +0200
-categories: ubuntu
-tags: installtion
+categories: os
+tags: installtion ubuntu
 math: true
 ---
 

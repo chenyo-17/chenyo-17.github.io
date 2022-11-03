@@ -1,8 +1,8 @@
 ---
 title: "Understanding Z3 fixed-point result"
 date: 2022-10-10 10:00:00 +0200
-categories: smt 
-tags: fixed-point z3
+categories: tool
+tags: smt z3
 math: true
 ---
 

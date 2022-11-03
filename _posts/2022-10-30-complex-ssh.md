@@ -1,8 +1,8 @@
 ---
 title: "Complex ssh operations"
 date: 2022-10-30 7:00:00 +0200
-categories: ssh 
-tags: ubuntu
+categories: os 
+tags: ssh
 math: true
 ---
 

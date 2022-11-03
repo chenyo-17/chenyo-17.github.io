@@ -1,8 +1,8 @@
 ---
 title: "BDD applications"
 date: 2022-10-28 10:00:00 +0200
-categories: BDD synthesis
-tags: BDD compilation
+categories: tool
+tags: BDD synthesis
 ---
 
 This post will collect applications of Binary Decision Diagram (BDD) in different fields.

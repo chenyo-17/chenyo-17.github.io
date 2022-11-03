@@ -1,8 +1,8 @@
 ---
 title: "Use remote language server on Tramp on emacs"
 date: 2022-10-31 13:00:00 +0200
-categories: emacs
-tags: remote-deploy lsp
+categories: tool
+tags: emacs tramp
 ---
 
 In my lecture I need the ssh access and write exercises there because my own laptop does not have the required environments.
