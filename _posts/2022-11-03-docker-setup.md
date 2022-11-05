@@ -210,3 +210,4 @@ Note that in practice it is unsafe to encode environment variables in one line, 
 To get the concrete ip address of a container instead of using the alias, one can use container `nicolaka/netshoot` with `docker run -it --network todo-app nicolaka/netshoot`.
 This container works as a DNS server in the network group, and one can query the ip address with `dig mysql`.
 
+
