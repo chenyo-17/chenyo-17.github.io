@@ -159,7 +159,10 @@ To use this tool, one can start a new container with the `getting-started` image
 
 ```bash
 docker run -dp 3000:3000 \
-    -w /app -v "$(pwd):/app" \  # bind mount current directory (i.e., /app) from the host into the /app directory in the container, container does not need to have /app directory in advance
+    -w /app -v "$(pwd):/app" \  
+    # bind mount current directory (i.e., /app) from the host 
+    # into the /app directory in the container
+    # container does not need to have /app directory in advance
     node:12-alpine \
     sh -c "yarn install && yarn run dev"
 ```
@@ -210,7 +213,7 @@ Note that in practice it is unsafe to encode environment variables in one line, 
 To get the concrete ip address of a container instead of using the alias, one can use container `nicolaka/netshoot` with `docker run -it --network todo-app nicolaka/netshoot`.
 This container works as a DNS server in the network group, and one can query the ip address with `dig mysql`.
 
-### summary
+### Summary
 
 1. create an image with Dockerfile: `docker build -t <image-name> .`
 
