@@ -210,4 +210,20 @@ Note that in practice it is unsafe to encode environment variables in one line, 
 To get the concrete ip address of a container instead of using the alias, one can use container `nicolaka/netshoot` with `docker run -it --network todo-app nicolaka/netshoot`.
 This container works as a DNS server in the network group, and one can query the ip address with `dig mysql`.
 
+### summary
 
+1. create an image with Dockerfile: `docker build -t <image-name> .`
+
+2. use an image to create a new container in the background: `docker run -d <image-name>`, if the image is not locally present, Docker will pull it from Docker hub.
+Note that the container will stop when there is no command running (e.g., defined in Dockerfile)
+
+3. check a running container id with `docker ps` 
+
+4. stop a container with `docker stop <container-id>`
+
+5. stop and remove a container with `docker rm -f <container-id>`
+
+6. to mount data between container and host machine, use `-v` tag when starting a container.
+There are 2 main options to mount data: named volume is used to persist data, and bind mount is used to deploy changes to the container right away without rebuild the image.
+
+7. to communicate between multiple containers, first use `docker network create <network-name>` to create a network, and attach containers to the network during startup with the tag `--network <network-name>` and `--network-alias <dns-alias>`.
