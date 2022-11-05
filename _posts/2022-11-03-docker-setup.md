@@ -92,6 +92,7 @@ FROM node:12-alpine
 RUN apk add --no-cache python2 g++ make
 
 # WORK <path/to/workdir>
+# the pwd when entering the container
 WORKDIR /app
 
 COPY . .
@@ -145,3 +146,66 @@ There are many types of volumes, one is called "named-volume", to create a named
 
 Once the container is reset, start it with the same flag `-v todo-db:/etc/todos` and the data is preserved.
 On the host machine, the mount point can be checked with `docker volume inspect todo-db`.
+To list all volumes, use `docker volume ls`
+
+#### Ex 4: bind mounts
+
+Named volume allows one to persist the database, but one cannot control where the database is stored on the host machine.
+On the other hand, one can use bind mounts to contol the exact mountpoint on the host and use it to provide additional data in the container.
+For instance, one can use bind mount to mount source code into the container and see the effect of code changes immediately.
+
+For node-based applications, there are tools to watch code changes and restart the app.
+To use this tool, one can start a new container with the `getting-started` image with:
+
+```bash
+docker run -dp 3000:3000 \
+    -w /app -v "$(pwd):/app" \  # bind mount current directory (i.e., /app) from the host into the /app directory in the container, container does not need to have /app directory in advance
+    node:12-alpine \
+    sh -c "yarn install && yarn run dev"
+```
+
+Then, once some changes are made in the source code, one can use `docker logs <container-id>` to see the node tool restart the service, and one can see the changes take effect without rebuilding the image.
+To enter the shell of the container, use `docker exec -it <container-id> sh`
+
+Using bind mounts is a common practice in the local development stage.
+
+#### Ex 5: multiple containers
+
+Each container only starts one process, therefore when running multiple apps, it is better to use one container for each app and let multiple containers communicate.
+As in a normal network, if 2 containers are in the same network, then they can directly communicate.
+
+To create a network in docker, use `docker network create <network-name>`, then one can start a container and attach it to the network with the flag `--network` to specify the network group and `--network-alias` to assign an alias for the container's assigned ip.
+
+For intance, to create a MySQL's container, one could run:
+```bash
+docker run -d \
+     --network todo-app --network-alias mysql \
+     -v todo-mysql-data:/var/lib/mysql \
+     -e MYSQL_ROOT_PASSWORD=secret \
+     -e MYSQL_DATABASE=todos \  # create a new database
+     mysql:5.7
+```
+Note that with `-v` we used a volume `todo-mysql-data` without creating it first with `docker volume create` command, in this case Docker will create a named volume automatically.
+
+To enter the MySQL, run `docker exec -it <container-id> mysql -u root -p` and enter the password.
+The database `todos` can be found with `SHOW DATABASES;`.
+
+Next, to connect to MySQL container, one can restart `getting-started` container to add it to the same network group and set the connection with several environmental variables:
+
+```bash
+docker run -dp 3000:3000 \
+   -w /app -v "$(pwd):/app" \
+   --network todo-app \
+   -e MYSQL_HOST=mysql \  # network alias for mysql
+   -e MYSQL_USER=root \
+   -e MYSQL_PASSWORD=secret \
+   -e MYSQL_DB=todos \
+   node:12-alpine \
+   sh -c "yarn install && yarn run dev"
+```
+
+Now, when adding new items to the database, one can also see it the MySQL container with `docker exec -it <container-id> mysql -p todos` and once inside the container run `select * from todo_items`.
+Note that in practice it is unsafe to encode environment variables in one line, one should instead mount secrets as files in the container and during the startup point to those files.
+
+To get the concrete ip address of a container instead of using the alias, one can use container `nicolaka/netshoot` with `docker run -it --network todo-app nicolaka/netshoot`.
+This container works as a DNS server in the network group, and one can query the ip address with `dig mysql`.
