@@ -213,11 +213,60 @@ Note that in practice it is unsafe to encode environment variables in one line, 
 To get the concrete ip address of a container instead of using the alias, one can use container `nicolaka/netshoot` with `docker run -it --network todo-app nicolaka/netshoot`.
 This container works as a DNS server in the network group, and one can query the ip address with `dig mysql`.
 
+#### Ex 6: docker compose
+
+Docker compose can help creating multiple containers and their dependencies (e.g., app uses MySQL) in a much simpler way than above.
+Instead of setting up a network group and creating each container separately, one can write the configs for diffent applications in a YML and use Docker compose to config them.
+
+Docker compose should be by default already installed along with docker engine, if not, run `sudo apt install docker-compose-plugin` and `docker compose version` to make sure it has been installed.
+
+Next, in the root of the app folder (e.g., `/app`), creat a `docker-compose.yml` file, and paste the following configs:
+
+```yaml
+version: "3.7"
+
+services:
+  app:
+    image: node:12-alpine
+    command: sh -c "yarn install && yarn run dev"
+    ports:
+      - 3000:3000
+    working_dir: /app
+    volumes:
+      - ./:/app
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: secret
+      MYSQL_DB: todos
+
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - todo-mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: todos
+
+volumes:
+  todo-mysql-data:
+```
+
+Basically, the compose file creates an application stack and contains all commands one needs in previous examples, including an `app` container, an `mysql` container and a named-volume.
+Note that there is not network group creation in the file, because Docker compose will do that automatically.
+
+To start the application stack, use `docker compose up -d`, then it will in the background (i.e., `-d`) creates a default network group for the stack, and creates 2 containers and 1 volume for the entire project (the project name depends on the YML file directory).
+One can then check the overall log for all containers in one file with `docker compose logs -f` or `docker compose logs -f app` for a specific application, here the flag `-f` means "follow" so that it never terminates (e.g., like `tail -f`)
+
+Note that Docker does not have built-in support to wait for another container to be ready before starting another container, one needs other tools to do this.
+
+To tear down the project, run `docker compose down --volumes` to remove all containers and the named volumes, without the flag `--volumes`, named volumes will not be removed.
+
 ### Summary
 
 1. create an image with Dockerfile: `docker build -t <image-name> .`
 
-2. use an image to create a new container in the background: `docker run -d <image-name>`, if the image is not locally present, Docker will pull it from Docker hub.
+2. use an image to create a new container in the background: `docker run -d <image-name>`, if the image is not locally present, Docker will pull it from Docker hub
 Note that the container will stop when there is no command running (e.g., defined in Dockerfile)
 
 3. check a running container id with `docker ps` 
@@ -227,6 +276,8 @@ Note that the container will stop when there is no command running (e.g., define
 5. stop and remove a container with `docker rm -f <container-id>`
 
 6. to mount data between container and host machine, use `-v` tag when starting a container.
-There are 2 main options to mount data: named volume is used to persist data, and bind mount is used to deploy changes to the container right away without rebuild the image.
+There are 2 main options to mount data: named volume is used to persist data, and bind mount is used to deploy changes to the container right away without rebuild the image
 
-7. to communicate between multiple containers, first use `docker network create <network-name>` to create a network, and attach containers to the network during startup with the tag `--network <network-name>` and `--network-alias <dns-alias>`.
+7. to communicate between multiple containers, first use `docker network create <network-name>` to create a network, and attach containers to the network during startup with the tag `--network <network-name>` and `--network-alias <dns-alias>`
+
+8. to simplify the entire workflow, config compose file in the root of the project, and use `docker compose up -d` to start everything at once
