@@ -30,10 +30,3 @@ math: true
     `pdb` is a python debugger in emacs, to start `pdb` I first need to be in the buffer of the specific file, the keywords are similar to gdb: `s` goes into a function, `n` skips entering inner functions, `b` lists current breakpoints and `b <line-number>` set a breakpoint at the given line, `c` continues the execution until reaching a breakpoint.
 Sometimes, there is error in the python interpreter but works fine in `pdb`, restart the python interpreter process would likely solve the problem.
 
-
-
-
-
-
-
-
