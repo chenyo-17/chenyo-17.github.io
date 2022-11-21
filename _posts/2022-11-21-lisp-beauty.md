@@ -26,7 +26,7 @@ A while ago I was recommended to watch [this talk](https://www.youtube.com/watch
         (eval-expr rand env))])))
 ```
 
-`pmatch` is a pattern match function that evaluates the symbolic input `expr`, and determine whether it is a symbolic variable, a function or an function application, and `env` stores arguments that should be parsed to the function.
+`pmatch` is a pattern match function that evaluates the symbolic input `expr`, and determines whether it is a symbolic variable, a function or an function application, and `env` stores arguments that should be parsed to the function.
 E.g., `((eval-expr '(lambda (x) (+ 1 x))) 5)` should return 6, because `(eval-expr '(lambda (x) (+ 1 x)))` should return a function, which takes argument `5` and return 6.
 If without `env`, the incorrect `eval-expr` would return `(lambda (arg) (eval-expr '(+ 1 x)))`, here, `lambda` is no more symbolic, but `x` is still symbolic, and `eval-expr` does not know how to evaluate `x`.
 
