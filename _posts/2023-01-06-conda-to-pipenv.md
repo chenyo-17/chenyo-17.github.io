@@ -1,5 +1,5 @@
 ---
-title: "Config Pyenv and Pipenv with Emacs"
+title: "Configure Pyenv and Pipenv with Emacs"
 date: 2023-01-06 16:00:00 +0200
 categories: os 
 tags: python venv pipenv pyenv
@@ -35,7 +35,7 @@ eval "$(pyenv virtualenv-init -)"
 3. Install the python version with `pyenv install 3.10.9` **before** creating the environment.
 **Don't** use `pyvenv --python 3.10` because if there is issues with the python installation, the error won't be promted.
 For instance, when I used the command `pyvenv --python 3.10` to create an environment and activate it with `pipenv shell` in the project directory, I could not install any package with `pipenv install` due to some SSL certificate error (and I can't use `pip install` neither in the environment because my system python version is different).
-It took me quite a while to realize that the problem might occur in my python installation (as the package installation was only successful in the system environment).
+It took me **quite a while** to realize that the problem might occur in my python installation (as the package installation was only successful in the system environment).
 It was only when I uninstalled python and reinstalled with `pyenv install`, I was reported the missing library error, and after installing the related libraries, the problem was resolved.
 
 4. Create the project directory.
