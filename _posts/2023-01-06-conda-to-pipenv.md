@@ -52,3 +52,4 @@ I am still very very new to Emacs so I don't know how to write config files to i
 But with the Pipfile listed the lanauge server should be able to recognize the python file, otherwise can use `pipenv-python` to specify the python version.
 
 An important thing to note is the language server should be also installed in the environment with `pipenv install python-lsp-server`, otherwise emacs cannot resolve the installed package import.
+
