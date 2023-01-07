@@ -51,4 +51,4 @@ Note that when there was an installation failure reporting `Failed building whee
 I am still very very new to Emacs so I don't know how to write config files to improve my workflow.
 But with the Pipfile listed the lanauge server should be able to recognize the python file, otherwise can use `pipenv-python` to specify the python version.
 
-An important thing to note is the language server should be also installed in the environment with `pipenv install python-lsp-server`, otherwise emacs cannot resolve the installed package import.
+An important thing to note is the language server should be also installed in the environment with `pipenv install python-lsp-server` as well as related formatter `pipenv install flake8` and `pipenv install black`, otherwise emacs cannot resolve the installed package import.
