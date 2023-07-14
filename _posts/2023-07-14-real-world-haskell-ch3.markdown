@@ -1,6 +1,6 @@
 ---
-title: "Real World Haskell 04: Pattern matching"
-date: 2023-07-14 13:00:00 +0200
+title: "Real World Haskell 03: Pattern matching"
+date: 2023-07-14 11:00:00 +0200
 categories: lecture
 tags: haskell
 math: false
