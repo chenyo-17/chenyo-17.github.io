@@ -1,5 +1,5 @@
 ---
-title: "Real world haskell 04: functional programming"
+title: "Real world haskell 04: Functional programming"
 date: 2023-07-14 12:00:00 +0200
 categories: lecture
 tags: haskell
